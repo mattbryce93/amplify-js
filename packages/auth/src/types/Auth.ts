@@ -177,6 +177,7 @@ export type UsernamePasswordOpts = {
 	username: string;
 	password: string;
 	validationData?: { [key: string]: any };
+	scopes: Array<string>;
 };
 
 export enum AuthErrorTypes {

@@ -422,6 +422,7 @@ export default class AuthClass {
 		let username = null;
 		let password = null;
 		let validationData = {};
+		let scopes = [];
 
 		// for backward compatibility
 		if (typeof usernameOrSignInOpts === 'string') {
@@ -436,6 +437,7 @@ export default class AuthClass {
 			username = usernameOrSignInOpts.username;
 			password = usernameOrSignInOpts.password;
 			validationData = usernameOrSignInOpts.validationData;
+			scopes = usernameOrSignInOpts.scopes;
 		} else {
 			return this.rejectAuthError(AuthErrorTypes.InvalidUsername);
 		}

@@ -23,7 +23,8 @@ export default class AuthenticationDetails {
 	 * @param {string} data.Username User being authenticated.
 	 * @param {string} data.Password Plain-text password to authenticate with.
 	 * @param {(AttributeArg[])?} data.ValidationData Application extra metadata.
-	 * @param {(AttributeArg[])?} data.AuthParamaters Authentication paramaters for custom auth.
+	 * @param {(AttributeArg[])?} data.AuthParamaters Authentication parameters for custom auth.
+	 * @param {(AttributeArg[])?} data.Scopes OAuth Scopes to be requested
 	 */
 	constructor(data) {
 		const {
@@ -32,7 +33,9 @@ export default class AuthenticationDetails {
 			Password,
 			AuthParameters,
 			ClientMetadata,
+			Scopes,
 		} = data || {};
+		this.scopes = Scopes || [];
 		this.validationData = ValidationData || {};
 		this.authParameters = AuthParameters || {};
 		this.clientMetadata = ClientMetadata || {};
@@ -73,5 +76,12 @@ export default class AuthenticationDetails {
 	 */
 	getClientMetadata() {
 		return this.clientMetadata;
+	}
+
+	/**
+	 * @returns {Array} the record's oauth scopes
+	 */
+	getScopes() {
+		return this.scopes;
 	}
 }
